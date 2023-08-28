@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.lerningcount.databinding.SettingsBinding
+import com.example.scorestudy.LifeData
+import com.example.scorestudy.R
+import com.example.scorestudy.databinding.SettingsBinding
 
 
 class Settings : Fragment() {
