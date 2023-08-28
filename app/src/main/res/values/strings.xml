@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Обучение счёту</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tittleNumOfLevels">Число уровней:</string>
+    <string name="slider_description">Число уровней</string>
+    <string name="tittleNumOfExercises">Примеров на уровне:</string>
+    <string name="tittleNumOfMistakes">Ошибок на уровне:</string>
+    <string name="switchMultiplication">Таблица умножения</string>
+    <string name="switchTimer">Таймер:</string>
+    <string name="tittleTimer">Время на пример, сек:</string>
+    <string name="tittleTimerPlus">Таймер+, сек:</string>
+    <string name="buttonSave">Сохранить</string>
+    <string name="tittle">Настройки</string>
+    <string name="timer_window_description">Время на пример</string>
+    <string name="timer_plus_description">Прибавление времени к уровню</string>
+    <string name="tittleTrueWindow">Верно</string>
+    <string name="tittleFalseWindow">Неверно</string>
+    <string name="ok">Ясно</string>
+    <string name="buttonAnswer">Ответить</string>
+</resources>

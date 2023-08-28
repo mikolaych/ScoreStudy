@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2A2C2E"
+    tools:context=".MainWindow">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/exerciseWindow"
+            style="@style/TittleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="70sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="148dp"
+            tools:text="5 + 6" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/info"
+            style="@style/TittleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseWindow"
+            tools:text="Введите число!" />
+
+        <RatingBar
+            android:id="@+id/level"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:numStars="4"
+            android:theme="@style/MyRatingBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ok"
+            style="@style/TittleTextStyle"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="30dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:background="@drawable/timer_window"
+            android:text="@string/ok"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/level"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/level" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tittleTrueWindow"
+            style="@style/TittleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-20dp"
+            android:text="@string/tittleTrueWindow"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/appCompatTextView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/appCompatTextView2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/trueWindow"
+            style="@style/TittleTextStyle"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#780202"
+            android:background="@drawable/true_style_window"
+            tools:text="5"
+            android:textSize="35sp"
+            app:layout_constraintEnd_toEndOf="@+id/tittleTrueWindow"
+            app:layout_constraintStart_toStartOf="@+id/tittleTrueWindow"
+            app:layout_constraintTop_toBottomOf="@+id/tittleTrueWindow" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView2"
+            style="@style/TittleTextStyle"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/timer_window"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/level"
+            tools:text="50" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tittleFalseWindow"
+            style="@style/TittleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-20dp"
+            android:text="@string/tittleFalseWindow"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView2"
+            app:layout_constraintTop_toTopOf="@+id/appCompatTextView2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/falseWindow"
+            style="@style/TittleTextStyle"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#048512"
+            android:background="@drawable/false_style_window"
+            tools:text="5"
+            android:textSize="35sp"
+            app:layout_constraintEnd_toEndOf="@+id/tittleFalseWindow"
+            app:layout_constraintStart_toStartOf="@+id/tittleFalseWindow"
+            app:layout_constraintTop_toBottomOf="@+id/tittleFalseWindow" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/answerWindow"
+            style="@style/TittleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#353A3C"
+            android:textSize="50sp"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2"
+            tools:text="11" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonAnswer"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_style"
+            android:text="@string/buttonAnswer"
+            android:textColor="@android:color/primary_text_dark_nodisable"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answerWindow" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
