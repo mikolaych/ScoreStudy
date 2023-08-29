@@ -12,13 +12,37 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/fullTimeTimerMin"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:gravity="end"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fullTimeTimer"
+            app:layout_constraintEnd_toStartOf="@+id/fullTimeTimer"
+            app:layout_constraintTop_toTopOf="@+id/fullTimeTimer"
+            android:text="0:" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/fullTimeTimer"
+            android:layout_width="20dp"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="50" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/exerciseWindow"
             style="@style/TittleTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:textSize="70sp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fullTimeTimer"
             tools:layout_editor_absoluteX="148dp"
             tools:text="5 + 6" />
 
@@ -67,9 +91,9 @@
             android:layout_marginTop="-20dp"
             android:text="@string/tittleTrueWindow"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/appCompatTextView2"
+            app:layout_constraintEnd_toStartOf="@+id/timer"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/appCompatTextView2" />
+            app:layout_constraintTop_toTopOf="@+id/timer" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/trueWindow"
@@ -86,15 +110,15 @@
             app:layout_constraintTop_toBottomOf="@+id/tittleTrueWindow" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView2"
+            android:id="@+id/timer"
             style="@style/TittleTextStyle"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/timer_window"
             android:textColor="@android:color/holo_blue_light"
             android:textSize="40sp"
-            android:visibility="invisible"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/level"
@@ -110,8 +134,8 @@
             android:text="@string/tittleFalseWindow"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/appCompatTextView2"
-            app:layout_constraintTop_toTopOf="@+id/appCompatTextView2" />
+            app:layout_constraintStart_toEndOf="@+id/timer"
+            app:layout_constraintTop_toTopOf="@+id/timer" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/falseWindow"
@@ -135,7 +159,7 @@
             android:layout_marginTop="20dp"
             android:background="#353A3C"
             android:textSize="50sp"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2"
+            app:layout_constraintTop_toBottomOf="@+id/timer"
             tools:text="11" />
 
         <androidx.appcompat.widget.AppCompatButton

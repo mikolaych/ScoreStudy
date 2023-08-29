@@ -21,5 +21,8 @@ open class LifeData: ViewModel() {
     val timerPlus: MutableLiveData<Int> by lazy {
         MutableLiveData<Int>()
     }
+    val multiplicationStatus: MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
 
 }

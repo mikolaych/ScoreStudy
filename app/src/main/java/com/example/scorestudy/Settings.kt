@@ -1,10 +1,13 @@
 package com.example.lerningcount
 
+import android.graphics.Color
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import com.example.scorestudy.LifeData
 import com.example.scorestudy.R
@@ -14,7 +17,6 @@ import com.example.scorestudy.databinding.SettingsBinding
 class Settings : Fragment() {
     lateinit var binding: SettingsBinding
     private val openModel: LifeData by activityViewModels()
-
 
     override fun onCreateView(
 
@@ -29,8 +31,6 @@ class Settings : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Включить/выключить таблицу умножения
-        switchMultiplication()
         // Включение/выключение таймера
         switchTimer()
         //Обработка кнопки save
@@ -40,20 +40,42 @@ class Settings : Fragment() {
     private fun buttonSaveClick() {
         binding.apply {
             buttonSave.setOnClickListener {
-                if (!switchMultiplication.isChecked) {
+                if (switchTimer.isChecked) {
+                    if (timerPlusWindow.text.isNullOrEmpty() || timerWindow.text.isNullOrEmpty()) {
+                        var timer = object : CountDownTimer(1000, 1000) {
+                            override fun onTick(p0: Long) {
+                                timerWindow.setBackgroundResource(R.drawable.round_style_red)
+                                timerPlusWindow.setBackgroundResource(R.drawable.round_style_red)
+                            }
+
+                            override fun onFinish() {
+                                timerWindow.setBackgroundResource(R.drawable.round_style)
+                                timerPlusWindow.setBackgroundResource(R.drawable.round_style)
+                            }
+
+                        }.start()
+                    } else {
+                        openModel.multiplicationStatus.value = true
+                        openModel.numLevel.value = sliderNumOfLevels.value.toInt()
+                        openModel.timer.value = timerWindow.text.toString().toInt()
+                        openModel.timerPlus.value = timerPlusWindow.text.toString().toInt()
+                        openModel.numExercise.value = sliderNumOfExercises.value.toInt()
+                        openModel.numMistakes.value = sliderNumOfMistakes.value.toInt()
+
+                        parentFragmentManager.beginTransaction().replace(R.id.fragment, MainWindow()).commit()
+                        parentFragmentManager.beginTransaction().remove(this@Settings).commit()
+                    }
+
+                } else {
+                    openModel.multiplicationStatus.value = true
+                    openModel.numExercise.value = sliderNumOfExercises.value.toInt()
+                    openModel.numMistakes.value = sliderNumOfMistakes.value.toInt()
                     openModel.numLevel.value = sliderNumOfLevels.value.toInt()
+                    parentFragmentManager.beginTransaction().replace(R.id.fragment, MainWindow()).commit()
+                    parentFragmentManager.beginTransaction().remove(this@Settings).commit()
                 }
-                openModel.numExercise.value = sliderNumOfExercises.value.toInt()
-                openModel.numMistakes.value = sliderNumOfMistakes.value.toInt()
-                if (switchTimer.isChecked){
-                    openModel.timer.value = timerWindow.text.toString().toInt()
-                    openModel.timerPlus.value = timerPlusWindow.text.toString().toInt()
-                }
-                parentFragmentManager.beginTransaction().replace(R.id.fragment, MainWindow()).commit()
-                parentFragmentManager.beginTransaction().remove(this@Settings).commit()
             }
         }
-
     }
 
     private fun switchTimer() {
@@ -73,21 +95,4 @@ class Settings : Fragment() {
             }
         }
     }
-
-
-    private fun switchMultiplication() {
-        binding.apply {
-            switchMultiplication.setOnCheckedChangeListener { compoundButton, isChecked ->
-                if(isChecked) {
-                    tittleNumOfLevels.visibility = View.INVISIBLE
-                    sliderNumOfLevels.visibility = View.INVISIBLE
-                } else {
-                    tittleNumOfLevels.visibility = View.VISIBLE
-                    sliderNumOfLevels.visibility = View.VISIBLE
-                }
-            }
-        }
-    }
-
-
 }
