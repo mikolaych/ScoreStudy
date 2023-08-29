@@ -55,7 +55,9 @@ class Settings : Fragment() {
 
                         }.start()
                     } else {
-                        openModel.multiplicationStatus.value = true
+                        if (switchMultiplication.isChecked) {
+                            openModel.multiplicationStatus.value = true
+                        }
                         openModel.numLevel.value = sliderNumOfLevels.value.toInt()
                         openModel.timer.value = timerWindow.text.toString().toInt()
                         openModel.timerPlus.value = timerPlusWindow.text.toString().toInt()
@@ -67,7 +69,9 @@ class Settings : Fragment() {
                     }
 
                 } else {
-                    openModel.multiplicationStatus.value = true
+                    if (switchMultiplication.isChecked) {
+                        openModel.multiplicationStatus.value = true
+                    }
                     openModel.numExercise.value = sliderNumOfExercises.value.toInt()
                     openModel.numMistakes.value = sliderNumOfMistakes.value.toInt()
                     openModel.numLevel.value = sliderNumOfLevels.value.toInt()
