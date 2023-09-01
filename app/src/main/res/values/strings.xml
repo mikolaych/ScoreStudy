@@ -14,8 +14,13 @@
     <string name="tittle">Настройки</string>
     <string name="timer_window_description">Время на пример</string>
     <string name="timer_plus_description">Прибавление времени к уровню</string>
-    <string name="tittleTrueWindow">Верно</string>
-    <string name="tittleFalseWindow">Неверно</string>
+    <string name="tittleTrueWindow">Верно:</string>
+    <string name="tittleFalseWindow">Неверно:</string>
     <string name="ok">Ясно</string>
     <string name="buttonAnswer">Ответить</string>
+    <string name="tittleStatistic">Статистика</string>
+    <string name="tittleNumOfExercisesStat">Примеров решено:</string>
+    <string name="grade">Оценка:</string>
+    <string name="tittleTimeOfExercises">Времени прошло:</string>
+    <string name="buttonAgain">Начать сначала</string>
 </resources>

@@ -25,4 +25,18 @@ open class LifeData: ViewModel() {
         MutableLiveData<Boolean>()
     }
 
+    //Для Statistic
+    val allTime: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
+    }
+    val numAllExercises: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
+    }
+    val numMistakesStat: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
+    }
+    val numTrueResult: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
+    }
+
 }

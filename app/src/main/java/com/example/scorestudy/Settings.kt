@@ -75,6 +75,7 @@ class Settings : Fragment() {
                     openModel.numExercise.value = sliderNumOfExercises.value.toInt()
                     openModel.numMistakes.value = sliderNumOfMistakes.value.toInt()
                     openModel.numLevel.value = sliderNumOfLevels.value.toInt()
+
                     parentFragmentManager.beginTransaction().replace(R.id.fragment, MainWindow()).commit()
                     parentFragmentManager.beginTransaction().remove(this@Settings).commit()
                 }

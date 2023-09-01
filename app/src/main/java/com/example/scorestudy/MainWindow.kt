@@ -14,27 +14,30 @@ import com.example.scorestudy.databinding.MainWindowBinding
 import java.util.Random
 
 //Полученные данные
-var numLvls = 0
-var numExercises = 5
-var numMistakes = 0
-var timerInput = 0
-var timerPlus = 0
-var multiplicationStatus = false
+private var numLvls = 0
+private var numExercises = 5
+private var numMistakes = 0
+private var timerInput = 0
+private var timerPlus = 0
+private var multiplicationStatus = false
 
 //Внутренние данные
-var random1 = 0
-var random2 = 0
-var lvlActual = 1
-var result = 0
-var numOfTrue = 0
-var numOfFalse = 0
-var numExerciseActual = 0
-var numMistakesActual = 0
-var min = 0
+private var random1 = 0
+private var random2 = 0
+private var lvlActual = 1
+private var result = 0
+private var numExerciseActual = 0
+private var numMistakesActual = 0
+private var min = 0
+private var fullTimeMin = 0
+private var fullTimeSec = 0
 
 
 //Для передачи в statistic
-var numAllExercises = 0
+private var fullTime = 0
+private var numAllExercises = 0
+private var numOfTrue = 0
+private var numOfFalse = 0
 
 class MainWindow : Fragment() {
     lateinit var binding: MainWindowBinding
@@ -82,11 +85,14 @@ class MainWindow : Fragment() {
         var timer1 = object : CountDownTimer(59.toLong() * 1000, 1000){
             override fun onTick(p0: Long) {
                 if ((59 - (p0 / 1000)).toInt() == 0) {
-                    binding.fullTimeTimerMin.text = "$min:"
+                    binding.fullTimeTimerMin.text = "$min"
                 }
                 binding.fullTimeTimer.text = (59 - (p0 / 1000)).toString()
+                fullTimeSec = (59 - (p0 / 1000)).toInt()
+
             }
             override fun onFinish() {
+                fullTimeMin += 59
                 min++
                 fullTimer()
             }
@@ -125,25 +131,40 @@ class MainWindow : Fragment() {
                     if (answerWindow.text.toString().toInt() == result) {
                         numOfTrue++
                         trueWindow.text = numOfTrue.toString()
+                        restart()
                     } else if (answerWindow.text.toString().toInt() != result) {
+                        timer2?.cancel()
                         numOfFalse++
                         numExerciseActual--
                         numMistakesActual++
                         falseWindow.text = numOfFalse.toString()
+                        info.text = "Правильный ответ: $result"
+                        ok.visibility = View.VISIBLE
+                        ok.setOnClickListener {
+                            ok.visibility = View.INVISIBLE
+                            info.text = null
+                            restart()
+                        }
+
                     }
-                    answerWindow.text = null
-                    numAllExercises++
-                    numExerciseActual++
-                    lvlControl()
-                    timer2?.cancel()
-                    timer(timerInput)
-                    mistakesControl()
-                    generateExercise()
+
 
                 }
             }
         }
     }
+
+    private fun restart() {
+        binding.answerWindow.text = null
+        numAllExercises++
+        numExerciseActual++
+        lvlControl()
+        timer2?.cancel()
+        timer(timerInput)
+        mistakesControl()
+        generateExercise()
+    }
+
     //Контроль ошибок
     private fun mistakesControl() {
         if (numMistakesActual > numMistakes) {
@@ -168,12 +189,53 @@ class MainWindow : Fragment() {
     private fun raitingControl(level: Int) {
 
         if (level == 0 ) {
+            fullTime = fullTimeMin + fullTimeSec
+            openModel.allTime.value = fullTime
+            openModel.numAllExercises.value = numAllExercises
+            openModel.numMistakesStat.value = numOfFalse
+            openModel.numTrueResult.value = numOfTrue
+
+            random1 = 0
+            random2 = 0
+            lvlActual = 1
+            result = 0
+            numExerciseActual = 0
+            numMistakesActual = 0
+            min = 0
+            fullTimeMin = 0
+            fullTimeSec = 0
+            fullTime = 0
+            numAllExercises = 0
+            numOfTrue = 0
+            numOfFalse = 0
+
             parentFragmentManager.beginTransaction().replace(R.id.fragment, Statistic()).commit()
             parentFragmentManager.beginTransaction().remove(this).commit()
+
         }
         if (level <= numLvls) {
             binding.level.rating = level.toFloat()
         } else {
+            fullTime = fullTimeMin + fullTimeSec
+            openModel.allTime.value = fullTime
+            openModel.numAllExercises.value = numAllExercises
+            openModel.numMistakesStat.value = numOfFalse
+            openModel.numTrueResult.value = numOfTrue
+
+              random1 = 0
+              random2 = 0
+              lvlActual = 1
+              result = 0
+              numExerciseActual = 0
+              numMistakesActual = 0
+              min = 0
+              fullTimeMin = 0
+              fullTimeSec = 0
+              fullTime = 0
+              numAllExercises = 0
+              numOfTrue = 0
+              numOfFalse = 0
+
             parentFragmentManager.beginTransaction().replace(R.id.fragment, Statistic()).commit()
             parentFragmentManager.beginTransaction().remove(this).commit()
         }

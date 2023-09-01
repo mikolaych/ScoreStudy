@@ -15,25 +15,39 @@
             android:id="@+id/fullTimeTimerMin"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
             android:gravity="end"
+            android:text="0"
+            android:inputType="number"
             android:textColor="@android:color/holo_blue_light"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/fullTimeTimer"
-            app:layout_constraintEnd_toStartOf="@+id/fullTimeTimer"
-            app:layout_constraintTop_toTopOf="@+id/fullTimeTimer"
-            android:text="0:" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/fullTimeTerminator"
+            android:layout_width="5dp"
+            android:layout_height="25dp"
+            android:gravity="end"
+            android:text=":"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fullTimeTimerMin"
+            app:layout_constraintStart_toEndOf="@+id/fullTimeTimerMin"
+            app:layout_constraintTop_toTopOf="@+id/fullTimeTimerMin" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/fullTimeTimer"
             android:layout_width="20dp"
             android:layout_height="25dp"
             android:gravity="center_vertical"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
             android:textColor="@android:color/holo_blue_light"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@+id/fullTimeTerminator"
+            app:layout_constraintStart_toEndOf="@+id/fullTimeTerminator"
+            app:layout_constraintTop_toTopOf="@+id/fullTimeTerminator"
             tools:text="50" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -74,9 +88,9 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginEnd="30dp"
-            android:textColor="@android:color/holo_blue_dark"
             android:background="@drawable/timer_window"
             android:text="@string/ok"
+            android:textColor="@android:color/holo_blue_dark"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/level"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,13 +115,13 @@
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:textColor="#780202"
             android:background="@drawable/true_style_window"
-            tools:text="5"
+            android:textColor="#780202"
             android:textSize="35sp"
             app:layout_constraintEnd_toEndOf="@+id/tittleTrueWindow"
             app:layout_constraintStart_toStartOf="@+id/tittleTrueWindow"
-            app:layout_constraintTop_toBottomOf="@+id/tittleTrueWindow" />
+            app:layout_constraintTop_toBottomOf="@+id/tittleTrueWindow"
+            tools:text="5" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/timer"
@@ -116,9 +130,9 @@
             android:layout_height="60dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/timer_window"
+            android:gravity="center"
             android:textColor="@android:color/holo_blue_light"
             android:textSize="40sp"
-            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/level"
@@ -143,13 +157,13 @@
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:textColor="#048512"
             android:background="@drawable/false_style_window"
-            tools:text="5"
+            android:textColor="#048512"
             android:textSize="35sp"
             app:layout_constraintEnd_toEndOf="@+id/tittleFalseWindow"
             app:layout_constraintStart_toStartOf="@+id/tittleFalseWindow"
-            app:layout_constraintTop_toBottomOf="@+id/tittleFalseWindow" />
+            app:layout_constraintTop_toBottomOf="@+id/tittleFalseWindow"
+            tools:text="5" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/answerWindow"
@@ -174,6 +188,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/answerWindow" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonAnswer" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

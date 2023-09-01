@@ -1,14 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2A2C2E"
     tools:context=".Statistic">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tittle"
+            style="@style/TittleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="24sp"
+            android:text="@string/tittleStatistic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tittleTimeOfExercises"
+            style="@style/TittleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/tittleTimeOfExercises"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tittle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/timeOfExercises"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:paddingHorizontal="10dp"
+            android:layout_marginStart="20dp"
+            style="@style/TittleTextStyle"
+            tools:text="30"
+            android:textColor="@android:color/holo_red_dark"
+            android:background="@drawable/round_style"
+            app:layout_constraintBottom_toBottomOf="@+id/tittleTimeOfExercises"
+            app:layout_constraintStart_toEndOf="@+id/tittleTimeOfExercises"
+            app:layout_constraintTop_toTopOf="@+id/tittleTimeOfExercises" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tittleNumOfExercises"
+            style="@style/TittleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/tittleNumOfExercisesStat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tittleTimeOfExercises" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/numOfExercisesWindowStat"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            style="@style/TittleTextStyle"
+            tools:text="30"
+            android:paddingHorizontal="10dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:background="@drawable/round_style"
+            app:layout_constraintBottom_toBottomOf="@+id/tittleNumOfExercises"
+            app:layout_constraintStart_toEndOf="@+id/tittleNumOfExercises"
+            app:layout_constraintTop_toTopOf="@+id/tittleNumOfExercises" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tittleTrueExercisesStat"
+            style="@style/TittleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/tittleTrueWindow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tittleNumOfExercises" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/windowTrueExercises"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            style="@style/TittleTextStyle"
+            tools:text="30"
+            android:paddingHorizontal="10dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:background="@drawable/round_style"
+            app:layout_constraintBottom_toBottomOf="@+id/tittleTrueExercisesStat"
+            app:layout_constraintStart_toEndOf="@+id/tittleTrueExercisesStat"
+            app:layout_constraintTop_toTopOf="@+id/tittleTrueExercisesStat" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tittleFalseExercisesStat"
+            style="@style/TittleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/tittleFalseWindow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tittleTrueExercisesStat" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/windowFalseExercises"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            style="@style/TittleTextStyle"
+            tools:text="30"
+            android:paddingHorizontal="10dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:background="@drawable/round_style"
+            app:layout_constraintBottom_toBottomOf="@+id/tittleFalseExercisesStat"
+            app:layout_constraintStart_toEndOf="@+id/tittleFalseExercisesStat"
+            app:layout_constraintTop_toTopOf="@+id/tittleFalseExercisesStat" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tittleGrade"
+            style="@style/TittleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/grade"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/windowFalseExercises" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/grade"
+            style="@style/TittleTextStyle"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            tools:text="5"
+            android:textSize="40sp"
+            android:background="@drawable/round_style"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tittleGrade" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonAgain"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:lineHeight="24sp"
+            android:layout_marginTop="20dp"
+            style="@style/TittleTextStyle"
+            android:text="@string/buttonAgain"
+            android:background="@drawable/round_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/grade" />
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
