@@ -126,8 +126,8 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/timer"
             style="@style/TittleTextStyle"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/timer_window"
             android:gravity="center"
@@ -171,7 +171,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="#353A3C"
+            android:inputType="number"
+            android:background="@drawable/window_answer_normal"
             android:textSize="50sp"
             app:layout_constraintTop_toBottomOf="@+id/timer"
             tools:text="11" />
@@ -188,17 +189,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/answerWindow" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonAnswer" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -37,12 +37,14 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/timeOfExercises"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:paddingHorizontal="10dp"
             android:layout_marginStart="20dp"
             style="@style/TittleTextStyle"
             tools:text="30"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:background="@drawable/round_style"
             app:layout_constraintBottom_toBottomOf="@+id/tittleTimeOfExercises"
             app:layout_constraintStart_toEndOf="@+id/tittleTimeOfExercises"
@@ -53,21 +55,23 @@
             style="@style/TittleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
             android:text="@string/tittleNumOfExercisesStat"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tittleTimeOfExercises" />
+            app:layout_constraintTop_toBottomOf="@+id/timeOfExercises" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/numOfExercisesWindowStat"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginStart="20dp"
             style="@style/TittleTextStyle"
             tools:text="30"
+            android:textSize="24sp"
             android:paddingHorizontal="10dp"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textStyle="bold"
             android:background="@drawable/round_style"
             app:layout_constraintBottom_toBottomOf="@+id/tittleNumOfExercises"
             app:layout_constraintStart_toEndOf="@+id/tittleNumOfExercises"
@@ -78,21 +82,23 @@
             style="@style/TittleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:text="@string/tittleTrueWindow"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tittleNumOfExercises" />
+            app:layout_constraintTop_toBottomOf="@+id/numOfExercisesWindowStat" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/windowTrueExercises"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginStart="20dp"
             style="@style/TittleTextStyle"
             tools:text="30"
+            android:textSize="24sp"
             android:paddingHorizontal="10dp"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textStyle="bold"
             android:background="@drawable/round_style"
             app:layout_constraintBottom_toBottomOf="@+id/tittleTrueExercisesStat"
             app:layout_constraintStart_toEndOf="@+id/tittleTrueExercisesStat"
@@ -107,17 +113,19 @@
             android:layout_marginStart="20dp"
             android:text="@string/tittleFalseWindow"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tittleTrueExercisesStat" />
+            app:layout_constraintTop_toBottomOf="@+id/windowTrueExercises" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/windowFalseExercises"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginStart="20dp"
             style="@style/TittleTextStyle"
             tools:text="30"
+            android:textSize="24sp"
             android:paddingHorizontal="10dp"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textStyle="bold"
             android:background="@drawable/round_style"
             app:layout_constraintBottom_toBottomOf="@+id/tittleFalseExercisesStat"
             app:layout_constraintStart_toEndOf="@+id/tittleFalseExercisesStat"
@@ -137,33 +145,16 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/grade"
             style="@style/TittleTextStyle"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             tools:text="5"
-            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textSize="60sp"
             android:background="@drawable/round_style"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tittleGrade" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonAgain"
-            android:layout_width="150dp"
-            android:layout_height="80dp"
-            android:lineHeight="24sp"
-            android:layout_marginTop="20dp"
-            style="@style/TittleTextStyle"
-            android:text="@string/buttonAgain"
-            android:background="@drawable/round_style"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/grade" />
-
-
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

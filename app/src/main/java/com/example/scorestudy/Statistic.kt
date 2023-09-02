@@ -1,5 +1,6 @@
 package com.example.lerningcount
 
+import android.content.Intent.getIntent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -50,24 +51,12 @@ class Statistic : Fragment() {
 
         //запись данных
         binding.apply {
-            timeOfExercises.text = "${allTime/60} минут ${allTime%60} секунд"
+            timeOfExercises.text = "${allTime/60} мин ${allTime%60} сек"
             numOfExercisesWindowStat.text = numAllExercises.toString()
             windowTrueExercises.text = numTrueEx.toString()
             windowFalseExercises.text = numMistakes.toString()
         }
 
-        //Возврат в начало
-        binding.buttonAgain.setOnClickListener {
-
-            allTime = 0
-            numAllExercises = 0
-            numMistakes = 0
-            numTrueEx = 0
-
-            parentFragmentManager.beginTransaction().replace(R.id.fragment, Settings()).commit()
-            parentFragmentManager.beginTransaction().remove(this).commit()
-
-        }
 
         //Оценка
         when (numTrueEx * 100 / numAllExercises) {
@@ -90,5 +79,7 @@ class Statistic : Fragment() {
             }
         }
     }
+
+
 
 }

@@ -15,7 +15,7 @@ import com.example.scorestudy.databinding.SettingsBinding
 
 
 class Settings : Fragment() {
-    lateinit var binding: SettingsBinding
+    private lateinit var binding: SettingsBinding
     private val openModel: LifeData by activityViewModels()
 
     override fun onCreateView(
@@ -55,29 +55,33 @@ class Settings : Fragment() {
 
                         }.start()
                     } else {
-                        if (switchMultiplication.isChecked) {
-                            openModel.multiplicationStatus.value = true
-                        }
+
+                        openModel.multiplicationStatus.value = switchMultiplication.isChecked
                         openModel.numLevel.value = sliderNumOfLevels.value.toInt()
                         openModel.timer.value = timerWindow.text.toString().toInt()
                         openModel.timerPlus.value = timerPlusWindow.text.toString().toInt()
                         openModel.numExercise.value = sliderNumOfExercises.value.toInt()
                         openModel.numMistakes.value = sliderNumOfMistakes.value.toInt()
 
-                        parentFragmentManager.beginTransaction().replace(R.id.fragment, MainWindow()).commit()
+
                         parentFragmentManager.beginTransaction().remove(this@Settings).commit()
+                        parentFragmentManager.beginTransaction().replace(R.id.fragment, MainWindow()).commit()
+
                     }
 
+
                 } else {
-                    if (switchMultiplication.isChecked) {
-                        openModel.multiplicationStatus.value = true
-                    }
+                    openModel.multiplicationStatus.value = switchMultiplication.isChecked
                     openModel.numExercise.value = sliderNumOfExercises.value.toInt()
                     openModel.numMistakes.value = sliderNumOfMistakes.value.toInt()
                     openModel.numLevel.value = sliderNumOfLevels.value.toInt()
 
-                    parentFragmentManager.beginTransaction().replace(R.id.fragment, MainWindow()).commit()
+                    openModel.timer.value = 0
+                    openModel.timerPlus.value = 0
+
                     parentFragmentManager.beginTransaction().remove(this@Settings).commit()
+                    parentFragmentManager.beginTransaction().replace(R.id.fragment, MainWindow()).commit()
+
                 }
             }
         }

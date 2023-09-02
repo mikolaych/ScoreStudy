@@ -43,6 +43,7 @@ class MainWindow : Fragment() {
     lateinit var binding: MainWindowBinding
     private val openModel: LifeData by activityViewModels()
     private var timer2 : CountDownTimer? = null
+    private var timer1 : CountDownTimer? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,7 +83,7 @@ class MainWindow : Fragment() {
     }
     //Таймер общего времени
     private fun fullTimer() {
-        var timer1 = object : CountDownTimer(59.toLong() * 1000, 1000){
+        timer1 = object : CountDownTimer(59.toLong() * 1000, 1000){
             override fun onTick(p0: Long) {
                 if ((59 - (p0 / 1000)).toInt() == 0) {
                     binding.fullTimeTimerMin.text = "$min"
@@ -126,7 +127,18 @@ class MainWindow : Fragment() {
         binding.apply {
             buttonAnswer.setOnClickListener {
                 if (answerWindow.text.isNullOrEmpty()) {
-                    info.text = "Введите число!"
+
+                    var timer = object : CountDownTimer(1000, 1000) {
+                        override fun onTick(p0: Long) {
+                            answerWindow.setBackgroundResource(R.drawable.window_answer_error)
+                            info.text = "Введите число!"
+                        }
+                        override fun onFinish() {
+                            answerWindow.setBackgroundResource(R.drawable.window_answer_normal)
+                            info.text = null
+                        }
+
+                    }.start()
                 }else {
                     if (answerWindow.text.toString().toInt() == result) {
                         numOfTrue++
@@ -145,10 +157,7 @@ class MainWindow : Fragment() {
                             info.text = null
                             restart()
                         }
-
                     }
-
-
                 }
             }
         }
@@ -208,9 +217,11 @@ class MainWindow : Fragment() {
             numAllExercises = 0
             numOfTrue = 0
             numOfFalse = 0
+            timer2?.cancel()
+            timer1?.cancel()
 
-            parentFragmentManager.beginTransaction().replace(R.id.fragment, Statistic()).commit()
             parentFragmentManager.beginTransaction().remove(this).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.fragment, Statistic()).commit()
 
         }
         if (level <= numLvls) {
@@ -235,24 +246,44 @@ class MainWindow : Fragment() {
               numAllExercises = 0
               numOfTrue = 0
               numOfFalse = 0
+              timer2?.cancel()
+              timer1?.cancel()
 
-            parentFragmentManager.beginTransaction().replace(R.id.fragment, Statistic()).commit()
             parentFragmentManager.beginTransaction().remove(this).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.fragment, Statistic()).commit()
+
         }
     }
     //Генератор примера
     private fun generateExercise() {
         binding.apply {
+            var lastNum1 = 0
+            var lastNum2 = 0
             if (multiplicationStatus) {
                 var num1 = getNumber(lvlActual)
                 var num2 = getNumber(lvlActual)
-                result = num1 * num2
-                exerciseWindow.text = "$num1 * $num2"
+                if (lastNum1 != num1 && lastNum2 != num2){
+                    result = num1 * num2
+                    lastNum1 = num1
+                    lastNum2 = num2
+                    exerciseWindow.text = "$num1 * $num2"
+                } else {
+                    var num1 = getNumber(lvlActual)
+                    var num2 = getNumber(lvlActual)
+                }
+
             } else {
                 var num1 = getNumber(lvlActual)
                 var num2 = getNumber(lvlActual)
-                result = num1 + num2
-                exerciseWindow.text = "$num1 + $num2"
+                if (lastNum1 != num1 && lastNum2 != num2) {
+                    result = num1 + num2
+                    lastNum1 = num1
+                    lastNum2 = num2
+                    exerciseWindow.text = "$num1 + $num2"
+                } else {
+                    var num1 = getNumber(lvlActual)
+                    var num2 = getNumber(lvlActual)
+                }
             }
         }
     }
