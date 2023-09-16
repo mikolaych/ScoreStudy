@@ -16,9 +16,9 @@
             style="@style/TittleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="24sp"
+            android:layout_marginTop="10dp"
             android:text="@string/tittleStatistic"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -136,8 +136,8 @@
             style="@style/TittleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/grade"
-            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/windowFalseExercises" />
@@ -147,14 +147,56 @@
             style="@style/TittleTextStyle"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            tools:text="5"
-            android:textStyle="bold"
-            android:textSize="60sp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/round_style"
-            android:layout_marginTop="20dp"
+            android:textSize="60sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tittleGrade" />
+            app:layout_constraintTop_toBottomOf="@+id/tittleGrade"
+            tools:text="5" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView"
+            style="@style/TittleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/my_font"
+            android:gravity="start"
+            android:textColor="#FABE88"
+            android:textSize="30sp"
+            android:paddingStart="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/grade"
+            tools:text="В конце концов имеет значение только то, чему ты научился и что по-настоящему усвоил." />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/round_style_green"
+            android:paddingHorizontal="2dp"
+            android:text="@string/btnAgain"
+            android:textColor="#852B2B"
+            app:layout_constraintBottom_toBottomOf="@+id/grade"
+            app:layout_constraintEnd_toStartOf="@+id/grade"
+            app:layout_constraintTop_toTopOf="@+id/grade" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/round_style_red"
+            android:paddingHorizontal="10dp"
+            android:text="@string/btnClose"
+            android:textColor="@android:color/holo_green_light"
+            app:layout_constraintBottom_toBottomOf="@+id/grade"
+            app:layout_constraintStart_toEndOf="@+id/grade"
+            app:layout_constraintTop_toTopOf="@+id/grade" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,6 +31,8 @@ private var numMistakesActual = 0
 private var min = 0
 private var fullTimeMin = 0
 private var fullTimeSec = 0
+var lastScore = 0
+
 
 
 //Для передачи в statistic
@@ -38,10 +40,12 @@ private var fullTime = 0
 private var numAllExercises = 0
 private var numOfTrue = 0
 private var numOfFalse = 0
+private var lvlDown = 0
 
 class MainWindow : Fragment() {
     lateinit var binding: MainWindowBinding
     private val openModel: LifeData by activityViewModels()
+    private var timer : CountDownTimer? = null
     private var timer2 : CountDownTimer? = null
     private var timer1 : CountDownTimer? = null
 
@@ -124,43 +128,42 @@ class MainWindow : Fragment() {
     }
     //Нажатие на ответ
     private fun answer(){
-        binding.apply {
-            buttonAnswer.setOnClickListener {
-                if (answerWindow.text.isNullOrEmpty()) {
+            binding.buttonAnswer.setOnClickListener {
+                if (binding.answerWindow.text.isNullOrEmpty()) {
 
-                    var timer = object : CountDownTimer(1000, 1000) {
+                    timer = object  : CountDownTimer(1000, 1000) {
                         override fun onTick(p0: Long) {
-                            answerWindow.setBackgroundResource(R.drawable.window_answer_error)
-                            info.text = "Введите число!"
+                            binding.answerWindow.setBackgroundResource(R.drawable.window_answer_error)
+                            binding.info.text = "Введите число!"
                         }
                         override fun onFinish() {
-                            answerWindow.setBackgroundResource(R.drawable.window_answer_normal)
-                            info.text = null
+                            binding.answerWindow.setBackgroundResource(R.drawable.window_answer_normal)
+                            binding.info.text = null
                         }
 
                     }.start()
                 }else {
-                    if (answerWindow.text.toString().toInt() == result) {
+                    if (binding.answerWindow.text.toString().toInt() == result) {
                         numOfTrue++
-                        trueWindow.text = numOfTrue.toString()
+                        binding.trueWindow.text = numOfTrue.toString()
                         restart()
-                    } else if (answerWindow.text.toString().toInt() != result) {
+                    } else if (binding.answerWindow.text.toString().toInt() != result) {
                         timer2?.cancel()
                         numOfFalse++
                         numExerciseActual--
                         numMistakesActual++
-                        falseWindow.text = numOfFalse.toString()
-                        info.text = "Правильный ответ: $result"
-                        ok.visibility = View.VISIBLE
-                        ok.setOnClickListener {
-                            ok.visibility = View.INVISIBLE
-                            info.text = null
+                        binding.falseWindow.text = numOfFalse.toString()
+                        binding.info.text = "Правильный ответ: $result"
+                        binding.ok.visibility = View.VISIBLE
+                        binding.ok.setOnClickListener {
+                            binding.ok.visibility = View.INVISIBLE
+                            binding.info.text = null
                             restart()
                         }
                     }
                 }
             }
-        }
+
     }
 
     private fun restart() {
@@ -178,6 +181,7 @@ class MainWindow : Fragment() {
     private fun mistakesControl() {
         if (numMistakesActual > numMistakes) {
             lvlActual--
+            lvlDown++
             numMistakesActual = 0
             raitingControl(lvlActual)
         }
@@ -203,6 +207,8 @@ class MainWindow : Fragment() {
             openModel.numAllExercises.value = numAllExercises
             openModel.numMistakesStat.value = numOfFalse
             openModel.numTrueResult.value = numOfTrue
+            openModel.numLvlDown.value = lvlDown
+
 
             random1 = 0
             random2 = 0
@@ -217,8 +223,10 @@ class MainWindow : Fragment() {
             numAllExercises = 0
             numOfTrue = 0
             numOfFalse = 0
+            timer?.cancel()
             timer2?.cancel()
             timer1?.cancel()
+
 
             parentFragmentManager.beginTransaction().remove(this).commit()
             parentFragmentManager.beginTransaction().replace(R.id.fragment, Statistic()).commit()
@@ -232,6 +240,7 @@ class MainWindow : Fragment() {
             openModel.numAllExercises.value = numAllExercises
             openModel.numMistakesStat.value = numOfFalse
             openModel.numTrueResult.value = numOfTrue
+            openModel.numLvlDown.value = lvlDown
 
               random1 = 0
               random2 = 0
@@ -246,8 +255,10 @@ class MainWindow : Fragment() {
               numAllExercises = 0
               numOfTrue = 0
               numOfFalse = 0
-              timer2?.cancel()
-              timer1?.cancel()
+            timer?.cancel()
+            timer2?.cancel()
+            timer1?.cancel()
+
 
             parentFragmentManager.beginTransaction().remove(this).commit()
             parentFragmentManager.beginTransaction().replace(R.id.fragment, Statistic()).commit()
@@ -257,32 +268,43 @@ class MainWindow : Fragment() {
     //Генератор примера
     private fun generateExercise() {
         binding.apply {
-            var lastNum1 = 0
-            var lastNum2 = 0
+            var num1 = getNumber(lvlActual)
+            var num2 = getNumber(lvlActual)
             if (multiplicationStatus) {
-                var num1 = getNumber(lvlActual)
-                var num2 = getNumber(lvlActual)
-                if (lastNum1 != num1 && lastNum2 != num2){
-                    result = num1 * num2
-                    lastNum1 = num1
-                    lastNum2 = num2
-                    exerciseWindow.text = "$num1 * $num2"
+                if (lastScore == num1 * num2) {
+                    generateExercise()
                 } else {
-                    var num1 = getNumber(lvlActual)
-                    var num2 = getNumber(lvlActual)
-                }
+                    if (lvlActual < 4) {
+                        result = num1 * num2
+                        lastScore = num1 * num2
+                        exerciseWindow.text = "$num1 * $num2"
 
+                    } else {
+                        var predResultDivide = num1 * num2
+                        result = num1
+                        lastScore = num1 * num2
+                        exerciseWindow.text = "$predResultDivide / $num2"
+                    }
+                }
             } else {
-                var num1 = getNumber(lvlActual)
-                var num2 = getNumber(lvlActual)
-                if (lastNum1 != num1 && lastNum2 != num2) {
-                    result = num1 + num2
-                    lastNum1 = num1
-                    lastNum2 = num2
-                    exerciseWindow.text = "$num1 + $num2"
+                if (num1 > num2) {
+                    if (lastScore == num1 - num2) {
+                        generateExercise()
+
+                    } else {
+                        result = num1 - num2
+                        lastScore = num1 - num2
+                        exerciseWindow.text = "$num1 - $num2"
+                    }
+
                 } else {
-                    var num1 = getNumber(lvlActual)
-                    var num2 = getNumber(lvlActual)
+                    if (lastScore == num1 + num2) {
+                        generateExercise()
+                    } else {
+                        result = num1 + num2
+                        lastScore = num1 + num2
+                        exerciseWindow.text = "$num1 + $num2"
+                    }
                 }
             }
         }
@@ -293,10 +315,10 @@ class MainWindow : Fragment() {
         if (multiplicationStatus) {
 
             when (lvl) {
-                1 -> number = rand(1, 4)
-                2 -> number = rand(3, 6)
+                1 -> number = rand(1, 5)
+                2 -> number = rand(4, 6)
                 3 -> number = rand(5, 9)
-                4 -> number = rand(8, 10)
+                4 -> number = rand(1, 9)
             }
 
         } else {
@@ -313,5 +335,12 @@ class MainWindow : Fragment() {
     private fun rand(start: Int, end: Int): Int {
         require(start <= end) { "Illegal Argument" }
         return (start..end).shuffled().first()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        timer?.cancel()
+        timer2?.cancel()
+        timer1?.cancel()
     }
 }

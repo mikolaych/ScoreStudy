@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2A2C2E"
+    tools:context=".BtnTimer">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/help1"
+            style="@style/TittleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="   Поля ввода временного ограничения для решения одного примера и приращении времени при повышении уровня, в секундах.
+Т.е. если в поле ВРЕМЯ НА ПРИМЕР введено 10, то для решения каждого примера на 1-м уровне будет отводится 10 секунд.
+\n   При повышении уровня к данному времени будет прибавлено значение из поля ТАЙМЕР+.
+Т.е. если в поле ТАЙМЕР+ Будет введено 5, то на 2-м уровне время для решения КАЖДОГО примера будет 10+5=15 секунд, на 3-м уровне 15+5=20 секунд, на 4-м 20+5=25 секунд.
+\n   Исключением является режим ТАБЛИЦА УМНОЖЕНИЯ, где время на решение примера одинаково на всех уровнях.
+"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

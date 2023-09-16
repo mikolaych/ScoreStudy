@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2A2C2E"
+    tools:context=".BtnMistakesNum">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/help1"
+            style="@style/TittleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="   Количество ошибочных ответов, допустимых на уровне.
+\n   При превышении количества ошибок, уровень сбрасывается на предыдущий.
+\n   При превышении количества ошибок на 1-м уровне, экзамен заканчивается и приложение переходит в окно статистики.
+\n   За каждое понижение уровня отнимается 1 балл от итоговой оценки"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

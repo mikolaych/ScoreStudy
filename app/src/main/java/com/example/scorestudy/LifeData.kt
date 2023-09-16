@@ -38,5 +38,9 @@ open class LifeData: ViewModel() {
     val numTrueResult: MutableLiveData<Int> by lazy {
         MutableLiveData<Int>()
     }
+    val numLvlDown: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
+    }
+
 
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2A2C2E"
+    tools:context=".BtnLevelNum">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/help1"
+            style="@style/TittleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="   Количество уровней, которое надо будет пройти тестируемому.
+\n   При сложении/вычитании на 1-м уровене используются числа
+    от 1 до 9, на 2-м - от 10 до 19, на 3-м - от 20 до 50, на 4-м - от 50 до 99.
+\n   При включенном переключателе Таблица умножения, на первых трех уровнях генерируются примеры на
+    умножение: 1-й уровень - от 1 до 5, 2-й - от 4 до 6, 3-й - от 5 до 9.
+\n   На 4-м уровне генерируются примеры на деление по всей таблице умножения(от 1 до 9)"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

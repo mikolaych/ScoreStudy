@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#2A2C2E"
+    android:layout_height="match_parent"
+    tools:context=".BtnMultiplication">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/help1"
+            style="@style/TittleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="   Переключатель режима таблицы умножения. При включении будут задаваться примеры из таблицы умножения
+\n   При отключении приложение снова перейдет в режим сложения/вычитания.
+\n   В режиме таблицы умножения можно задать только одно время на таймер. Поле ТАЙМЕР+ не активно.
+\n   Подробнее про уровни режима ТАБЛИЦА УМНОЖЕНИЯ см. в разделе ЧИСЛО УРОВНЕЙ"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

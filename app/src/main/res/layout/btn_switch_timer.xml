@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2A2C2E"
+    tools:context=".BtnSwitchTimer">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/help1"
+            style="@style/TittleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="   Переключатель режима таймера. Включает режим временного ограничения на каждый ответ.
+\n    При включеном состоянии обязательно требуется ввести в поля ВРЕМЯ НА ПРИМЕР и ТАЙМЕР+ значения.
+ При отсутствии значений, данные поля будут подсвечиваться красным и приложение не будет переведено в режим экзамена.
+\n   При отключенном состоянии режим экзамена запустится без временных ограничений на решение примеров.
+\n   Подробнее о временных ограничениях см. в разделах ВРЕМЯ НА ПРИМЕР и ТАЙМЕР+.
+"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
