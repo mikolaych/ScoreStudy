@@ -87,7 +87,7 @@
             style="@style/TittleTextStyle"
             android:layout_width="80dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/timer_window"
             android:text="@string/ok"
             android:textColor="@android:color/holo_blue_dark"
@@ -189,6 +189,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/answerWindow" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="#FFE600"
+            app:layout_constraintBottom_toBottomOf="@+id/level"
+            app:layout_constraintEnd_toEndOf="@+id/timer"
+            app:layout_constraintStart_toEndOf="@+id/level"
+            app:layout_constraintTop_toTopOf="@+id/level"
+            tools:text="Осталось: 51" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

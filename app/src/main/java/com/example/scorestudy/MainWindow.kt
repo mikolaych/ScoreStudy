@@ -31,6 +31,7 @@ private var numMistakesActual = 0
 private var min = 0
 private var fullTimeMin = 0
 private var fullTimeSec = 0
+private var leftExercises = 0
 var lastScore = 0
 
 
@@ -80,6 +81,8 @@ class MainWindow : Fragment() {
         openModel.multiplicationStatus.observe(activity as LifecycleOwner) {
             multiplicationStatus = it
         }
+
+        leftExercises = numLvls * numExercises
         generateExercise()
         answer()
         fullTimer()
@@ -146,6 +149,8 @@ class MainWindow : Fragment() {
                     if (binding.answerWindow.text.toString().toInt() == result) {
                         numOfTrue++
                         binding.trueWindow.text = numOfTrue.toString()
+                        leftExercises-=1
+                        binding.left.text = "Осталось: $leftExercises"
                         restart()
                     } else if (binding.answerWindow.text.toString().toInt() != result) {
                         timer2?.cancel()
@@ -161,6 +166,7 @@ class MainWindow : Fragment() {
                             restart()
                         }
                     }
+
                 }
             }
 
@@ -181,6 +187,8 @@ class MainWindow : Fragment() {
     private fun mistakesControl() {
         if (numMistakesActual > numMistakes) {
             lvlActual--
+            leftExercises+= numExercises
+            binding.left.text = "Осталось: $leftExercises"
             lvlDown++
             numMistakesActual = 0
             raitingControl(lvlActual)

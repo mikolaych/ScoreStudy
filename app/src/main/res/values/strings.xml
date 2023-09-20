@@ -25,7 +25,7 @@
     <string name="buttonAgain">Начать сначала</string>
     <string name="btnAgain">Заново</string>
     <string name="btnClose">Закрыть</string>
-    <string name="versionNumber">Version 1.2</string>
+    <string name="versionNumber">Version 1.3</string>
     <string name="btnLevelNum">Число уровней</string>
     <string name="btnExerciseNum">Примеров на уровне</string>
     <string name="btnMistakesNum">Ошибок на уровне</string>
